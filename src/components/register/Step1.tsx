@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StepProps } from '../../types/types';
+import { StepProps } from '../../app/types/types';
 
 const Step1: React.FC<StepProps> = ({ setFormData, formData, nextStep }) => {
   const [maxOccupancy, setMaxOccupancy] = useState<number>(formData.maxOccupancy ? Number(formData.maxOccupancy) : 0);

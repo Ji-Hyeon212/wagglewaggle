@@ -2,10 +2,10 @@
 "use client"; 
 
 import React, { useState } from 'react';
-import Step1 from '../components/register/Step1';
-import Step2 from '../components/register/Step2';
-import Step3 from '../components/register/Step3';
-import Step4 from '../components/register/Step4';
+import Step1 from '../../components/register/Step1';
+import Step2 from '../../components/register/Step2';
+import Step3 from '../../components/register/Step3';
+import Step4 from '../../components/register/Step4';
 import { FormDataType } from '../types/types';
 
 

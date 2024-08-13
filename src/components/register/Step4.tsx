@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StepProps } from '../../types/types';
+import { StepProps } from '../../app/types/types';
 
 const Step4: React.FC<StepProps> = ({ setFormData, formData, prevStep, submitForm }) => {
   const [description, setDescription] = useState<string>(formData.description || '');
