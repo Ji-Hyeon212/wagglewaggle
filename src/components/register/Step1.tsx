@@ -30,9 +30,7 @@ const Step1: React.FC<StepProps> = ({ setFormData, formData, nextStep }) => {
 
   return (
     <div className="p-6 flex flex-col items-center">
-      <h2 className="text-4xl font-bold mb-6 text-center">숙소의 기본정보를 입력해주세요</h2>
-      <br />
-      <br />
+      <h2 className="text-4xl font-bold mb-12 text-center">숙소의 기본정보를 입력해주세요</h2>
       <div className="w-3/4 mb-4">
         <label className="block text-xl font-bold mb-2 text-center">
           <span className="inline-block rounded-md bg-orange-300 bg-opacity-50 px-2">

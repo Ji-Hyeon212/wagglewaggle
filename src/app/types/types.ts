@@ -8,7 +8,7 @@ export interface FormDataType {
   dates?: string;
   price?: number | string;
   description?: string;
-  photos?: FileList | null;
+  photos?: File[] | null;
 }
 
 export interface StepProps {
