@@ -2,10 +2,12 @@
 "use client"; 
 
 import React, { useState } from 'react';
-import Step1 from '../components/register/Step1';
-import Step2 from '../components/register/Step2';
-import Step3 from '../components/register/Step3';
-import Step4 from '../components/register/Step4';
+import Header from '../../components/common/Header';
+import Step1 from '../../components/register/Step1';
+import Step2 from '../../components/register/Step2';
+import Step3 from '../../components/register/Step3';
+import Step4 from '../../components/register/Step4';
+import ProgressBar from '../../components/register/ProgressBar';
 import { FormDataType } from '../types/types';
 
 
@@ -17,7 +19,7 @@ const RegisterPage: React.FC = () => {
   const prevStep = () => setStep(step - 1);
   const submitForm = () => {
     console.log('Form data submitted:', formData);
-    // Here you would typically send the data to your Nest.js backend
+    //백엔드로 전달
   };
 
   const renderStep = () => {
@@ -36,7 +38,9 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className='bg-white'>
+        <Header/>
+        <ProgressBar step={step} totalSteps={4} />
       {renderStep()}
     </div>
   );

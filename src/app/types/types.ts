@@ -1,14 +1,15 @@
-// types.ts
-
 export interface FormDataType {
   maxOccupancy?: number;
   bedCount?: number;
   phone?: string;
   location?: string;
-  dates?: string;
+  startDate?: Date | null | undefined; // Allow both null and undefined
+  endDate?: Date | null | undefined;   // Allow both null and undefined
+  checkInTime?: string;
+  checkOutTime?: string;
   price?: number | string;
   description?: string;
-  photos?: FileList | null;
+  photos?: File[] | null;
 }
 
 export interface StepProps {
