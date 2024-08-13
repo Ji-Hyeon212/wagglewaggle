@@ -1,20 +1,64 @@
-// export default function Home() {
-//   return (
-//     <main className="flex min-h-screen flex-col items-center justify-between">
-//       <div>hi</div>
-//     </main>
-//   );
-// }
+"use client";
 
-// pages/index.js
+import Header from "@components/common/Header";
+import { MainSearchBar } from "@components/main/MainSearchBar";
+import { useState } from "react";
+import Link from "next/link";
 
-import IndexHero from "../../public/IndexHero.svg";
-import Image from "next/image";
-import { Header } from "@/components/commons/Header";
+type House = {
+  si: string;
+  address: string;
+  price: string;
+  rate: number;
+};
+
+const houses: House[] = [
+  {
+    si: "부산 광역시 기장군",
+    address: "수림로 81번길",
+    price: String(30000).toLocaleString(),
+    rate: 4.7,
+  },
+  {
+    si: "부산 광역시 사상구",
+    address: "수림로 81번길",
+    price: String(30000).toLocaleString(),
+    rate: 4.4,
+  },
+  {
+    si: "부산 광역시 수영구",
+    address: "수림로 81번길",
+    price: String(30000).toLocaleString(),
+    rate: 3.8,
+  },
+  {
+    si: "부산 광역시 강서구",
+    address: "수림로 81번길",
+    price: String(30000).toLocaleString(),
+    rate: 3.6,
+  },
+  {
+    si: "부산 광역시 연제구",
+    address: "수림로 81번길",
+    price: String(30000).toLocaleString(),
+    rate: 3.5,
+  },
+  {
+    si: "부산 광역시 영도구",
+    address: "수림로 81번길",
+    price: String(40000).toLocaleString(),
+    rate: 3.3,
+  },
+];
 
 export default function Home() {
+  const [filter, setFilter] = useState<string>(" ");
+
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div
+      className="min-h-screen"
+      style={{ maxWidth: "1280px", margin: "0 auto" }}
+    >
       <Header />
 
       {/* Hero Section */}
@@ -23,8 +67,6 @@ export default function Home() {
         style={{
           backgroundImage: `url("/IndexHero.svg")`,
           height: "656px",
-          maxWidth: "1280px",
-          aspectRatio: "16:9",
           borderTopLeftRadius: "30px",
           borderTopRightRadius: "30px",
         }}
@@ -35,7 +77,6 @@ export default function Home() {
             height: "100%",
             display: "flex",
             flexDirection: "column",
-            alignItems: "start",
             paddingLeft: "50px",
           }}
         >
@@ -79,55 +120,52 @@ export default function Home() {
             </span>
             <span>하게!</span>
           </h1>
-          <p className="text-gray-600 mt-4">
-            와글와글과 함께 새로운 특별한 숙소를 찾아보세요 :)
+          <p style={{ fontSize: "16px" }}>
+            와글와글과 함께 새로운 특별한 숙소를 찾아보세요
+            <span style={{ fontSize: "22px", fontWeight: "bold" }}>☺</span>
           </p>
-          <div className="mt-6 space-x-2">
-            <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full">
-              위치
-            </button>
-            <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full">
-              체크인
-            </button>
-            <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full">
-              체크아웃
-            </button>
-            <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full">
-              인원 수
-            </button>
-          </div>
-          <button className="bg-orange-400 text-white mt-4 px-6 py-2 rounded-full">
-            검색
-          </button>
+          <MainSearchBar setFilter={setFilter} />
         </div>
-        {/*<div className="w-1/2">*/}
-        {/*  <Image src={IndexHero} alt={"인덱스 배너"} />*/}
-        {/*</div>*/}
       </section>
 
       {/* Cards Section */}
-      <section className="container mx-auto px-4 py-12">
+      <section className="container mx-auto py-12">
         <div className="grid grid-cols-3 gap-6">
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-md rounded-lg overflow-hidden"
-            >
-              <div className="p-4">
-                <div className="text-sm text-gray-500">
-                  London, MIDT | England
+          {houses
+            .filter((item) => item.si.includes(filter))
+            .map((item, index) => (
+              <Link key={index} href="/detail">
+                <div
+                  className="shadow-md rounded-lg overflow-hidden"
+                  style={{ backgroundColor: "#fafafa", height: "500px" }}
+                >
+                  <div
+                    style={{
+                      minHeight: "300px",
+                      maxHeight: "300px",
+                      overflowY: "hidden",
+                      backgroundImage: `url("/images/house/${index}.jpg")`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  ></div>
+                  <div className="p-4">
+                    <div className="text-sm text-gray-500">{item.si}</div>
+                    <h3 className="font-semibold text-lg text-gray-800 mt-2">
+                      {item.address}
+                    </h3>
+                    <div className="text-sm text-gray-600 mt-1">
+                      {item.price}
+                    </div>
+                    <div className="flex items-center mt-2">
+                      <span className="text-red-500">★</span>
+                      <span className="text-gray-800">{item.rate}</span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-lg text-gray-800 mt-2">
-                  Danubius Hotel Regents Park
-                </h3>
-                <div className="text-sm text-gray-600 mt-1">$200 Per Night</div>
-                <div className="flex items-center mt-2">
-                  <span className="text-red-500">★</span>
-                  <span className="ml-2 text-gray-800">4.8</span>
-                </div>
-              </div>
-            </div>
-          ))}
+              </Link>
+            ))}
         </div>
       </section>
     </div>
