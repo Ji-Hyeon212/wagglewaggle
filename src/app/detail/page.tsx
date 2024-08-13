@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import Image from "next/image";
 import Header from "@components/common/Header";
@@ -11,8 +12,11 @@ import CalenderIcon from '@images/detail/calendaricon.svg';
 import DescriptionIcon from '@images/detail/description.svg';
 import PinIcon from '@images/detail/pin.svg';
 import Map from '@images/detail/haman.png';
+import {useRouter} from "next/navigation";
 
 const Detail = () => {
+    const router = useRouter()
+
     return (
         <div>
             <Header></Header>
@@ -50,7 +54,8 @@ const Detail = () => {
                             </div>
                             <div className={'flex justify-between'}>
                                 <span className={'mt-2 text-[#C20E0E] text-4xl font-extrabold'}>30,000원</span>
-                                <button className={'bg-[#F69E4D] text-2xl text-white font-bold py-3 px-10 rounded-3xl'}>예약하기</button>
+                                <button className={'bg-[#F69E4D] text-2xl text-white font-bold py-3 px-10 rounded-3xl'}
+                                        onClick={() =>router.push('/reservation')}>예약하기</button>
                             </div>
                         </div>
                     </div>
