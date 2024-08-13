@@ -2,23 +2,12 @@ import React, { useState } from 'react';
 import { StepProps } from '../../app/types/types';
 
 const Step4: React.FC<StepProps> = ({ setFormData, formData, prevStep, submitForm }) => {
-  const [description, setDescription] = useState<string>(formData.description || '');
-  const [photos, setPhotos] = useState<FileList | null>(null);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setPhotos(e.target.files);
-    }
-  };
+  const [location, setLocation] = useState('');
 
   const handleSubmit = () => {
-    // Convert FileList to an array if needed for further processing
-    const photosArray = photos ? Array.from(photos) : null;
-
     setFormData({
       ...formData,
-      description,
-      photos,
+      location,
     });
     if (submitForm) {
       submitForm();
@@ -27,33 +16,31 @@ const Step4: React.FC<StepProps> = ({ setFormData, formData, prevStep, submitFor
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">숙소의 기본정보를 입력해주세요.</h2>
+      <h2 className="text-4xl font-black mb-4 text-center">다 끝났어요.</h2>
+      <h2 className="text-4xl font-black mb-12 text-center">마지막으로 숙소 위치를 입력해주세요!</h2>
 
-      <div className="mb-4">
-        <label className="block text-gray-700">숙소를 잘 나타내는 사진을 등록해주세요.</label>
+      <div className="mb-8">
         <input
-          type="file"
-          multiple
-          onChange={handleFileChange}
-          className="mt-2 p-2 border border-gray-300 rounded w-full"
+          type="text"
+          placeholder="주소를 입력하세요."
+          className="w-full p-4 text-lg border border-gray-300 rounded-lg"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
         />
+        <div className="mt-4">
+          {/* Placeholder for the map component */}
+          <div className="w-full h-64 bg-gray-200 rounded-lg">
+            {/* You can replace this with an actual map component like Google Maps or Kakao Maps */}
+            <span className="text-gray-500 flex items-center justify-center h-full">Map Component Placeholder</span>
+          </div>
+        </div>
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700">숙소를 간단하게 소개해주세요.</label>
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="mt-2 p-2 border border-gray-300 rounded w-full"
-          placeholder="어떤 내용이든 자유롭게 작성해주세요 :)"
-        ></textarea>
-      </div>
-
-      <div className="flex justify-between">
-        <button onClick={prevStep} className="bg-gray-300 text-black p-2 rounded">
+      <div className="flex justify-center space-x-2 mx-150">
+        <button onClick={prevStep} className="bg-gray-300 text-black font-bold p-3 rounded-lg w-1/4">
           이전
         </button>
-        <button onClick={handleSubmit} className="bg-orange-500 text-white p-2 rounded">
+        <button onClick={handleSubmit} className="bg-customColor text-black font-bold p-3 rounded-lg w-1/4">
           완료
         </button>
       </div>

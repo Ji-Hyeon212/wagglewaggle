@@ -95,7 +95,7 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="mt-2 p-4 w-full max-w-lg h-64 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-shadow shadow-md placeholder-gray-400 resize-none"
+          className="mt-2 p-4 w-full max-w-lg h-40 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-shadow shadow-md placeholder-gray-400 resize-none"
           placeholder="어떤 내용이든 자유롭게 작성해주세요 :)"
         ></textarea>
       </div>
