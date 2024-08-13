@@ -1,4 +1,5 @@
 //예약하기
+'use client'
 import React from 'react';
 import Header from "@components/common/Header";
 import Image from "next/image";
@@ -7,8 +8,11 @@ import UserIcon from '@images/detail/usericon.svg';
 import AlarmIcon from '@images/detail/alarmicon.svg';
 import CoinIcon from '@images/reservation/coin.svg';
 import CalenderIcon from '@images/detail/calendaricon.svg';
+import {useRouter} from "next/navigation";
 
 const Reservation = () => {
+    const router = useRouter()
+
     return (
         <div>
             <Header></Header>
@@ -36,7 +40,8 @@ const Reservation = () => {
                                 <span className={'text-black text-xl'}>2인</span>
                             </div>
                         </div>
-                        <button className={'bg-[#F69E4D] h-16 rounded-3xl text-black text-3xl font-bold'}>결제하기</button>
+                        <button className={'bg-[#F69E4D] h-16 rounded-3xl text-black text-3xl font-bold'}
+                                onClick={() =>router.push('/complete-reservation')}>결제하기</button>
                     </div>
                 </div>
             </div>
