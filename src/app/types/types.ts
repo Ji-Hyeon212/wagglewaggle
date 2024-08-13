@@ -3,8 +3,8 @@ export interface FormDataType {
   bedCount?: number;
   phone?: string;
   location?: string;
-  startDate?: Date | null | undefined; // Allow both null and undefined
-  endDate?: Date | null | undefined;   // Allow both null and undefined
+  startDate?: Date | null | undefined; 
+  endDate?: Date | null | undefined;   
   checkInTime?: string;
   checkOutTime?: string;
   price?: number | string;

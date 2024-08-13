@@ -7,6 +7,7 @@ import Step1 from '../../components/register/Step1';
 import Step2 from '../../components/register/Step2';
 import Step3 from '../../components/register/Step3';
 import Step4 from '../../components/register/Step4';
+import Step5 from '../../components/register/Step5';
 import ProgressBar from '../../components/register/ProgressBar';
 import { FormDataType } from '../types/types';
 
@@ -19,6 +20,7 @@ const RegisterPage: React.FC = () => {
   const prevStep = () => setStep(step - 1);
   const submitForm = () => {
     console.log('Form data submitted:', formData);
+    setStep(step + 1);
     //백엔드로 전달
   };
 
@@ -32,6 +34,8 @@ const RegisterPage: React.FC = () => {
         return <Step3 setFormData={setFormData} formData={formData} nextStep={nextStep} prevStep={prevStep} />;
       case 4:
         return <Step4 setFormData={setFormData} formData={formData} prevStep={prevStep} submitForm={submitForm} />;
+        case 5:
+        return <Step5/>;
       default:
         return <Step1 setFormData={setFormData} formData={formData} nextStep={nextStep} />;
     }
