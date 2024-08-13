@@ -16,7 +16,7 @@ const Header = () => {
                 <Link href={'/'} className={'text-21'}>탐색하기</Link>
                 <Link href={'/register'} className={'text-21'}>숙소등록하기</Link>
                 <Link href={'/mypage'} className={'text-21'}>마이페이지</Link>
-                <Link href={'/login'} className={'text-21'}><button className={'bg-[#F69E4D] p-2 rounded-2xl text-white'}>로그인</button></Link>
+                <Link href={'/login'} className={'text-21'}><button className={'bg-[#F69E4D] p-2 rounded-2xl text-white'}>로그아웃</button></Link>
             </div>
         </header>
     )
