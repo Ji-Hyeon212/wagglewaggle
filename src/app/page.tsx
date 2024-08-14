@@ -4,6 +4,7 @@ import Header from "@components/common/Header";
 import { MainSearchBar } from "@components/main/MainSearchBar";
 import React, { useState } from "react";
 import Link from "next/link";
+import "./page.css";
 
 type House = {
   si: string;
@@ -26,8 +27,8 @@ const houses: House[] = [
     rate: 4.4,
   },
   {
-    si: "경상남도 함안군",
-    address: "몽글몽글 함안군의 어느 할부지댁",
+    si: "부산 광역시 다대구",
+    address: "다대포 바다 집",
     price: 30000,
     rate: 4.0,
   },
@@ -50,6 +51,13 @@ const houses: House[] = [
     rate: 3.5,
   },
 ];
+
+const target = {
+  si: "경상남도 함안군",
+  address: "몽글몽글 함안군의 어느 할부지댁",
+  price: 30000,
+  rate: 4.9,
+};
 
 export default function Home() {
   const [filter, setFilter] = useState<string>(" ");
@@ -131,44 +139,95 @@ export default function Home() {
       {/* Cards Section */}
       <section className="container mx-auto py-12">
         <div className="grid grid-cols-3 gap-6">
+          <Link href="/detail">
+            <div
+              className="shadow-md rounded-lg overflow-hidden"
+              style={{
+                backgroundColor: "#fafafa",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    minHeight: "300px",
+                    maxHeight: "300px",
+                    overflowY: "hidden",
+                    backgroundImage: `url("/images/detail/granpahouse.svg")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    // backgroundRepeat: "no-repeat",
+                    border: "1px solid #f5ede4",
+                  }}
+                ></div>
+                <div className="p-4">
+                  <div className="text-sm text-gray-500">{target.si}</div>
+                  <h3 className="font-semibold text-lg text-gray-800 mt-2">
+                    {target.address}
+                  </h3>
+                  <span className="text-red-500">
+                    {Array.from({ length: Math.floor(target.rate) }).map(
+                      (_, index) => (
+                        <span key={index}>★</span>
+                      ),
+                    )}
+                    {target.rate % 1 !== 0 && <span>☆</span>} {/* 반 별 */}
+                  </span>
+                  <span className="text-gray-800 ml-2">{target.rate}</span>
+                  <div
+                    className={"mt-2 text-orange-400 text-4xl font-extrabold"}
+                    style={{ textAlign: "end" }}
+                  >
+                    ₩{target.price.toLocaleString()}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
           {houses
             .filter((item) => item.si.includes(filter))
             .map((item, index) => (
               <Link key={index} href="/detail">
                 <div
                   className="shadow-md rounded-lg overflow-hidden"
-                  style={{ backgroundColor: "#fafafa" }}
+                  style={{
+                    backgroundColor: "#fafafa",
+                  }}
                 >
-                  <div
-                    style={{
-                      minHeight: "300px",
-                      maxHeight: "300px",
-                      overflowY: "hidden",
-                      backgroundImage: `url("/images/house/${index}.jpg")`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  ></div>
-                  <div className="p-4">
-                    <div className="text-sm text-gray-500">{item.si}</div>
-                    <h3 className="font-semibold text-lg text-gray-800 mt-2">
-                      {item.address}
-                    </h3>
-                    <span className="text-red-500">
-                      {Array.from({ length: Math.floor(item.rate) }).map(
-                        (_, index) => (
-                          <span key={index}>★</span>
-                        ),
-                      )}
-                      {item.rate % 1 !== 0 && <span>☆</span>} {/* 반 별 */}
-                    </span>
-                    <span className="text-gray-800 ml-2">{item.rate}</span>
+                  <div>
                     <div
-                      className={"mt-2 text-orange-400 text-4xl font-extrabold"}
-                      style={{ textAlign: "end" }}
-                    >
-                      {item.price.toLocaleString()}원
+                      style={{
+                        minHeight: "300px",
+                        maxHeight: "300px",
+                        overflowY: "hidden",
+                        backgroundImage: `url("/images/house/${index}.jpg")`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                        border: "1px solid #f5ede4",
+                      }}
+                    ></div>
+                    <div className="p-4">
+                      <div className="text-sm text-gray-500">{item.si}</div>
+                      <h3 className="font-semibold text-lg text-gray-800 mt-2">
+                        {item.address}
+                      </h3>
+                      <span className="text-red-500">
+                        {Array.from({ length: Math.floor(item.rate) }).map(
+                          (_, index) => (
+                            <span key={index}>★</span>
+                          ),
+                        )}
+                        {item.rate % 1 !== 0 && <span>☆</span>} {/* 반 별 */}
+                      </span>
+                      <span className="text-gray-800 ml-2">{item.rate}</span>
+                      <div
+                        className={
+                          "mt-2 text-orange-400 text-4xl font-extrabold"
+                        }
+                        style={{ textAlign: "end" }}
+                      >
+                        ₩{item.price.toLocaleString()}
+                      </div>
                     </div>
                   </div>
                 </div>
