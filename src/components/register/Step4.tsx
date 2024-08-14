@@ -41,12 +41,8 @@ const Step4: React.FC<StepProps> = ({ setFormData, formData, prevStep, submitFor
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
-        <div className="mt-4">
-          {/* Placeholder for the map component */}
-          <div className="w-full h-64 bg-gray-200 rounded-lg">
-            {/* You can replace this with an actual map component like Google Maps or Kakao Maps */}
-            <span className="text-gray-500 flex items-center justify-center h-full">Map Component Placeholder</span>
-          </div>
+        <div className="mt-4 flex justify-center">
+            <img src="/images/register/map.png" alt="Map image" className='w-1/2 h-full'/>
         </div>
         <audio id="step4-1" src="audio/step4-1.mp3"></audio>
       </div>
