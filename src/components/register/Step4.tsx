@@ -14,11 +14,25 @@ const Step4: React.FC<StepProps> = ({ setFormData, formData, prevStep, submitFor
     }
   };
 
+  const playAudio = (audioId: string) => {
+    const audioElement = document.getElementById(audioId) as HTMLAudioElement;
+    if (audioElement) {
+      audioElement.play();
+    }
+  };
+
   return (
     <div className="p-6">
       <h2 className="text-7xl font-black mb-4 text-center">다 끝났어요.</h2>
       <h2 className="text-7xl font-black mb-12 text-center">마지막으로 숙소 위치를 입력해주세요!</h2>
-
+      <label className="block text-4xl font-bold mb-2 text-center">
+          <span className="inline-block rounded-md bg-orange-300 bg-opacity-50 px-2">
+            숙소의 정확한 주소를 알려주세요
+          </span>
+          <button onClick={() => playAudio('step4-1')} className="ml-4">
+            <img src="/images/register/audio-icon.png" alt="Play audio" className="w-6 h-6" />
+          </button>
+        </label>
       <div className="mb-8">
         <input
           type="text"
@@ -34,6 +48,7 @@ const Step4: React.FC<StepProps> = ({ setFormData, formData, prevStep, submitFor
             <span className="text-gray-500 flex items-center justify-center h-full">Map Component Placeholder</span>
           </div>
         </div>
+        <audio id="step4-1" src="audio/step4-1.mp3"></audio>
       </div>
 
       <div className="flex justify-center space-x-2 mx-150 text-3xl">

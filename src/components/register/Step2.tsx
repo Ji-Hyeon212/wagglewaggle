@@ -8,13 +8,12 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const selectedFiles = Array.from(e.target.files); // FileList를 File[]로 변환
+      const selectedFiles = Array.from(e.target.files);
       setPhotos((prevPhotos) => [...prevPhotos, ...selectedFiles]);
 
       const selectedPreviews = selectedFiles.map((file) => URL.createObjectURL(file));
       setPreview((prevPreview) => [...prevPreview, ...selectedPreviews]);
 
-      // Revoke object URLs after component unmount
       return () => selectedPreviews.forEach((file) => URL.revokeObjectURL(file));
     }
   };
@@ -35,6 +34,13 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
     }
   };
 
+  const playAudio = (audioId: string) => {
+    const audioElement = document.getElementById(audioId) as HTMLAudioElement;
+    if (audioElement) {
+      audioElement.play();
+    }
+  };
+
   return (
     <div className="p-6">
       <h2 className="text-7xl font-black mb-12 text-center">숙소의 기본정보를 이어서 입력해주세요</h2>
@@ -44,6 +50,9 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
           <span className="inline-block rounded-md bg-orange-300 bg-opacity-50 px-2">
             숙소를 잘 나타내는 사진을 등록해주세요
           </span>
+          <button onClick={() => playAudio('step2-1')} className="ml-4">
+            <img src="/images/register/audio-icon.png" alt="Play audio" className="w-6 h-6" />
+          </button>
         </label>
         <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center relative w-full max-w-lg">
           <input
@@ -84,6 +93,7 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
             </div>
           ))}
         </div>
+        <audio id="step2-1" src="audio/step2-1.mp3"></audio>
       </div>
 
       <div className="mb-4 flex flex-col items-center">
@@ -91,6 +101,9 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
           <span className="inline-block rounded-md bg-orange-300 bg-opacity-50 px-2">
             숙소를 간단하게 소개해주세요
           </span>
+          <button onClick={() => playAudio('step2-2')} className="ml-4">
+            <img src="/images/register/audio-icon.png" alt="Play audio" className="w-6 h-6" />
+          </button>
         </label>
         <textarea
           value={description}
@@ -98,6 +111,7 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
           className="text-3xl mt-2 p-4 w-full max-w-lg h-40 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-shadow shadow-md placeholder-gray-400 resize-none"
           placeholder="자유롭게 숙소를 설명해주세요 :)"
         ></textarea>
+        <audio id="step2-2" src="audio/step2-2.mp3"></audio>
       </div>
 
       <div className="flex justify-center space-x-2 mx-150 text-3xl">
