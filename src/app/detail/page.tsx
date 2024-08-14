@@ -12,6 +12,9 @@ import CalenderIcon from "@images/detail/calendaricon.svg";
 import DescriptionIcon from "@images/detail/description.svg";
 import PinIcon from "@images/detail/pin.svg";
 import Map from "@images/detail/haman.png";
+import User1 from "@images/detail/user1.svg";
+import User2 from "@images/detail/user2.svg";
+import User3 from "@images/detail/user3.svg";
 import { useRouter } from "next/navigation";
 import "./page.css";
 import DailyChart from "@components/detail/DailyChart";
@@ -133,6 +136,7 @@ const Detail = () => {
           </div>
         </div>
         <div className={"bg-[#E8E8E8] h-0.5 my-16"}></div>
+        {/*숙소 설명*/}
         <div className={"flex flex-col gap-10 mb-40"}>
           <div className={"flex gap-3"}>
             <Image src={DescriptionIcon} alt={"description"}></Image>
@@ -153,8 +157,55 @@ const Detail = () => {
             <div>여러모로 소중한 추억 많이 만들어가시길 바래요.</div>
             <div>편하게 전화주셔요.</div>
           </div>
-          <DailyChart />
         </div>
+        <div className={"bg-[#E8E8E8] h-0.5 my-16"}></div>
+        {/*사용자 리뷰*/}
+        <div className={"flex flex-col gap-10"}>
+          <div className={"flex gap-3"}>
+            <Image src={DescriptionIcon} alt={"description"}></Image>
+            <span className={"text-black text-3xl font-extrabold"}>
+              사용자 리뷰
+            </span>
+          </div>
+          <div className={"flex gap-6 w-full h-600 pb-50 "}>
+            <div className={'flex gap-6 p-6 bg-white rounded-2xl drop-shadow-md'}>
+              <Image src={User1} alt={'user'} width={100} height={100}></Image>
+              <div className={'flex flex-col gap-6 text-black'}>
+                <span className={'text-2xl font-extrabold align-middle'}>장덕춘 님</span>
+                <div className={'text-black text-xl'}>
+                  재방문 의사 200%입니다^^
+                  몇일씩 휴가 받아서 그안에서 책을 읽으며 지내고 싶었어요~
+                  주인 할부지 너무 친절하세요!
+                </div>
+              </div>
+            </div>
+            <div className={'flex gap-6 p-6 bg-white rounded-2xl drop-shadow-md'}>
+              <Image src={User2} alt={'user'} width={100} height={100}></Image>
+              <div className={'flex flex-col gap-6 text-black'}>
+                <span className={'text-2xl font-extrabold align-middle'}>장덕춘 님</span>
+                <div className={'text-black text-xl'}>
+                  시원하게 책 실컷보고 잘 쉬다갑니다ㅎㅎ
+                  조식도 완전 맛있었고 내려주신 커피도 자꾸 생각날것같아요!
+                  사장님의 배려도 감사했습니다♡
+                </div>
+              </div>
+            </div>
+            <div className={'flex gap-6 p-6 bg-white rounded-2xl drop-shadow-md'}>
+              <Image src={User3} alt={'user'} width={100} height={100}></Image>
+              <div className={'flex flex-col gap-6 text-black'}>
+                <span className={'text-2xl font-extrabold align-middle'}>장덕춘 님</span>
+                <div className={'text-black text-xl'}>
+                  재방문 의사 200%입니다^^
+                  몇일씩 휴가 받아서 그안에서 책을 읽으며 지내고 싶었어요~
+                  주인 할부지 너무 친절하세요!
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div className={"bg-[#E8E8E8] h-0.5 my-16"}></div>
+        <DailyChart />
         <div className={"bg-[#E8E8E8] h-0.5 my-16"}></div>
         <div className={"flex flex-col gap-10"}>
           <div className={"flex gap-3"}>
