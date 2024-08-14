@@ -26,15 +26,15 @@ const Step3: React.FC<StepProps> = ({ setFormData, formData, nextStep, prevStep 
 
   return (
     <div className="p-6">
-      <h2 className="text-4xl font-black mb-12 text-center">숙소를 운영할 날짜와 가격을 입력해주세요.</h2>
+      <h2 className="text-7xl font-black mb-12 text-center">숙소를 운영할 날짜와 가격을 입력해주세요.</h2>
 
-      <div className="mb-4 w-1/2 mx-auto">
-        <label className="block text-xl font-bold mb-2 text-center">
+      <div className="mb-12 w-1/2 mx-auto">
+        <label className="block text-4xl font-bold mb-2 text-center">
           <span className="inline-block rounded-md bg-orange-300 bg-opacity-50 px-2">
             운영 날짜를 골라주세요
           </span>
         </label>
-        <div className="mt-2 p-2 border border-gray-300 rounded">
+        <div className="mt-2 p-2 border text-3xl border-gray-300 rounded text-center">
           <DatePicker
             selected={startDate}
             onChange={(dates: [Date | null, Date | null]) => {
@@ -52,43 +52,49 @@ const Step3: React.FC<StepProps> = ({ setFormData, formData, nextStep, prevStep 
           />
         </div>
       </div>
-
-      <div className="mb-4 w-1/2 mx-auto">
-        <label className="block text-xl font-bold mb-2 text-center">
+      <div className="mb-12 w-1/2 mx-auto">
+        <label className="block text-4xl font-bold mb-2 text-center">
           <span className="inline-block rounded-md bg-orange-300 bg-opacity-50 px-2">
-            체크인 시간을 입력해주세요
+            손님받는 시간을 설정해주세요
           </span>
         </label>
-        <select
-          value={checkInTime}
-          onChange={(e) => setCheckInTime(e.target.value)}
-          className="mt-2 p-2 border border-gray-300 rounded w-full"
-        >
-          {Array.from({ length: 24 }).map((_, hour) => (
-            <option key={hour} value={`${hour}:00`}>{`${hour}:00`}</option>
-          ))}
-        </select>
+        <div className="flex space-x-2">
+          <div className="w-1/2">
+            <label className="block text-xl font-medium mb-1 text-center">
+              입실 시간을 골라주세요
+            </label>
+            <select
+              value={checkInTime}
+              onChange={(e) => setCheckInTime(e.target.value)}
+              className="mt-2 p-2 border border-gray-300 rounded w-full"
+            >
+              {Array.from({ length: 24 }).map((_, hour) => (
+                <option key={hour} value={`${hour}:00`}>{`${hour}:00`}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="w-1/2">
+            <label className="block text-xl font-medium mb-1 text-center">
+              퇴실 시간을 설정해주세요
+            </label>
+            <select
+              value={checkOutTime}
+              onChange={(e) => setCheckOutTime(e.target.value)}
+              className="mt-2 p-2 border border-gray-300 rounded w-full"
+            >
+              {Array.from({ length: 24 }).map((_, hour) => (
+                <option key={hour} value={`${hour}:00`}>{`${hour}:00`}</option>
+              ))}
+            </select>
+          </div>
+        </div>
       </div>
 
-      <div className="mb-4 w-1/2 mx-auto">
-        <label className="block text-xl font-bold mb-2 text-center">
-          <span className="inline-block rounded-md bg-orange-300 bg-opacity-50 px-2">
-            체크아웃 시간을 입력해주세요
-          </span>
-        </label>
-        <select
-          value={checkOutTime}
-          onChange={(e) => setCheckOutTime(e.target.value)}
-          className="mt-2 p-2 border border-gray-300 rounded w-full"
-        >
-          {Array.from({ length: 24 }).map((_, hour) => (
-            <option key={hour} value={`${hour}:00`}>{`${hour}:00`}</option>
-          ))}
-        </select>
-      </div>
+
 
       <div className="mb-12 w-1/2 mx-auto">
-        <label className="block text-xl font-bold mb-2 text-center">
+        <label className="block text-4xl font-bold mb-2 text-center">
           <span className="inline-block rounded-md bg-orange-300 bg-opacity-50 px-2">
             하루 숙박비를 입력해주세요
           </span>
@@ -98,11 +104,11 @@ const Step3: React.FC<StepProps> = ({ setFormData, formData, nextStep, prevStep 
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           className="mt-2 p-2 border border-gray-300 rounded w-full"
-          placeholder="20000"
+          placeholder="예시) 20,000"
         />
       </div>
 
-      <div className="flex justify-center space-x-2 mx-150">
+      <div className="flex justify-center space-x-2 mx-150 text-3xl">
         <button onClick={prevStep} className="bg-gray-300 text-black font-bold p-3 rounded-lg w-1/4">
           뒤로
         </button>

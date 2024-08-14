@@ -37,10 +37,10 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
 
   return (
     <div className="p-6">
-      <h2 className="text-4xl font-black mb-12 text-center">숙소의 기본정보를 이어서 입력해주세요</h2>
+      <h2 className="text-7xl font-black mb-12 text-center">숙소의 기본정보를 이어서 입력해주세요</h2>
 
-      <div className="mb-4 flex flex-col items-center">
-        <label className="block text-xl font-bold mb-2 text-center">
+      <div className="mb-6 flex flex-col items-center">
+        <label className="block text-4xl font-bold mb-2 text-center">
           <span className="inline-block rounded-md bg-orange-300 bg-opacity-50 px-2">
             숙소를 잘 나타내는 사진을 등록해주세요
           </span>
@@ -67,7 +67,7 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
                 d="M12 16.5v-9m-4.5 4.5H9m6 0h1.5m-7.5 4.5h6M4.5 3h15a2.25 2.25 0 012.25 2.25v13.5A2.25 2.25 0 0119.5 21H4.5A2.25 2.25 0 012.25 18.75V5.25A2.25 2.25 0 014.5 3z"
               />
             </svg>
-            <p className="text-gray-500 mt-2">여기에 파일을 끌어다 놓거나 클릭하여 파일을 선택하세요</p>
+            <p className="text-3xl text-gray-500 mt-2">여기에 시진을 끌어다 놓거나 클릭하여 사진을 선택하세요</p>
           </div>
         </div>
         <div className="mt-4 flex flex-wrap gap-4">
@@ -87,7 +87,7 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
       </div>
 
       <div className="mb-4 flex flex-col items-center">
-        <label className="block text-xl font-bold mb-2 text-center">
+        <label className="block text-4xl font-bold mb-2 text-center">
           <span className="inline-block rounded-md bg-orange-300 bg-opacity-50 px-2">
             숙소를 간단하게 소개해주세요
           </span>
@@ -95,12 +95,12 @@ const Step2: React.FC<StepProps> = ({ setFormData, formData, prevStep, nextStep 
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="mt-2 p-4 w-full max-w-lg h-40 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-shadow shadow-md placeholder-gray-400 resize-none"
-          placeholder="어떤 내용이든 자유롭게 작성해주세요 :)"
+          className="text-3xl mt-2 p-4 w-full max-w-lg h-40 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-shadow shadow-md placeholder-gray-400 resize-none"
+          placeholder="자유롭게 숙소를 설명해주세요 :)"
         ></textarea>
       </div>
 
-      <div className="flex justify-center space-x-2 mx-150">
+      <div className="flex justify-center space-x-2 mx-150 text-3xl">
         <button onClick={prevStep} className="bg-gray-300 text-black font-bold p-3 rounded-lg w-1/4">
           뒤로
         </button>

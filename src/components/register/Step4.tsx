@@ -16,14 +16,14 @@ const Step4: React.FC<StepProps> = ({ setFormData, formData, prevStep, submitFor
 
   return (
     <div className="p-6">
-      <h2 className="text-4xl font-black mb-4 text-center">다 끝났어요.</h2>
-      <h2 className="text-4xl font-black mb-12 text-center">마지막으로 숙소 위치를 입력해주세요!</h2>
+      <h2 className="text-7xl font-black mb-4 text-center">다 끝났어요.</h2>
+      <h2 className="text-7xl font-black mb-12 text-center">마지막으로 숙소 위치를 입력해주세요!</h2>
 
       <div className="mb-8">
         <input
           type="text"
           placeholder="주소를 입력하세요."
-          className="w-full p-4 text-lg border border-gray-300 rounded-lg"
+          className="w-full p-4 text-xl border border-gray-300 rounded-lg"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
@@ -36,7 +36,7 @@ const Step4: React.FC<StepProps> = ({ setFormData, formData, prevStep, submitFor
         </div>
       </div>
 
-      <div className="flex justify-center space-x-2 mx-150">
+      <div className="flex justify-center space-x-2 mx-150 text-3xl">
         <button onClick={prevStep} className="bg-gray-300 text-black font-bold p-3 rounded-lg w-1/4">
           이전
         </button>
