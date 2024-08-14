@@ -39,7 +39,12 @@ const Signup = () => {
             className="w-full px-4 py-3 mb-6 bg-gray-100 rounded-lg text-gray-700 placeholder-gray-400"
             style={{ fontFamily: "Jua" }}
           />
-
+          <input
+            type="number"
+            placeholder="나이"
+            className="w-full px-4 py-3 mb-6 bg-gray-100 rounded-lg text-gray-700 placeholder-gray-400"
+            style={{ fontFamily: "Jua" }}
+          />
           <button
             className="w-full bg-black text-white py-3 rounded-lg text-lg font-semibold"
             style={{ fontFamily: "Jua" }}
