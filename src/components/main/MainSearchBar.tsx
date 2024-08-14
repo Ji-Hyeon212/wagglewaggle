@@ -27,6 +27,7 @@ const busanDistricts = [
   "수영구",
   "사상구",
   "기장군",
+  "경상남도 함안군",
 ];
 
 export interface IMainSearchBar {
@@ -174,7 +175,7 @@ export const MainSearchBar = ({ setFilter }: IMainSearchBar) => {
                   <button
                     className="mt-4 bg-orange-400 text-white px-4 py-2 rounded w-full"
                     onClick={() => {
-                      setLocation(`부산 광역시 ${district}`);
+                      setLocation(`${district}`);
                       setIsLocationModalOpen(false);
                     }}
                   >

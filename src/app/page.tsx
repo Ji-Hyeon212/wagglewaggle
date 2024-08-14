@@ -2,52 +2,52 @@
 
 import Header from "@components/common/Header";
 import { MainSearchBar } from "@components/main/MainSearchBar";
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 type House = {
   si: string;
   address: string;
-  price: string;
+  price: number;
   rate: number;
 };
 
 const houses: House[] = [
   {
     si: "부산 광역시 기장군",
-    address: "수림로 81번길",
-    price: String(30000).toLocaleString(),
+    address: "손이 큰 할머니댁",
+    price: 30000,
     rate: 4.7,
   },
   {
     si: "부산 광역시 사상구",
-    address: "수림로 81번길",
-    price: String(30000).toLocaleString(),
+    address: "행복한 집",
+    price: 30000,
     rate: 4.4,
   },
   {
+    si: "경상남도 함안군",
+    address: "몽글몽글 함안군의 어느 할부지댁",
+    price: 30000,
+    rate: 4.0,
+  },
+  {
     si: "부산 광역시 수영구",
-    address: "수림로 81번길",
-    price: String(30000).toLocaleString(),
+    address: "마당이 넓은 집",
+    price: 40000,
     rate: 3.8,
   },
   {
     si: "부산 광역시 강서구",
-    address: "수림로 81번길",
-    price: String(30000).toLocaleString(),
+    address: "고기 잘 구워주는 집",
+    price: 40000,
     rate: 3.6,
   },
   {
     si: "부산 광역시 연제구",
-    address: "수림로 81번길",
-    price: String(30000).toLocaleString(),
+    address: "꽃이 예쁜 집",
+    price: 30000,
     rate: 3.5,
-  },
-  {
-    si: "부산 광역시 영도구",
-    address: "수림로 81번길",
-    price: String(40000).toLocaleString(),
-    rate: 3.3,
   },
 ];
 
@@ -137,7 +137,7 @@ export default function Home() {
               <Link key={index} href="/detail">
                 <div
                   className="shadow-md rounded-lg overflow-hidden"
-                  style={{ backgroundColor: "#fafafa", height: "500px" }}
+                  style={{ backgroundColor: "#fafafa" }}
                 >
                   <div
                     style={{
@@ -155,12 +155,20 @@ export default function Home() {
                     <h3 className="font-semibold text-lg text-gray-800 mt-2">
                       {item.address}
                     </h3>
-                    <div className="text-sm text-gray-600 mt-1">
-                      {item.price}
-                    </div>
-                    <div className="flex items-center mt-2">
-                      <span className="text-red-500">★</span>
-                      <span className="text-gray-800">{item.rate}</span>
+                    <span className="text-red-500">
+                      {Array.from({ length: Math.floor(item.rate) }).map(
+                        (_, index) => (
+                          <span key={index}>★</span>
+                        ),
+                      )}
+                      {item.rate % 1 !== 0 && <span>☆</span>} {/* 반 별 */}
+                    </span>
+                    <span className="text-gray-800 ml-2">{item.rate}</span>
+                    <div
+                      className={"mt-2 text-orange-400 text-4xl font-extrabold"}
+                      style={{ textAlign: "end" }}
+                    >
+                      {item.price.toLocaleString()}원
                     </div>
                   </div>
                 </div>
